@@ -72,13 +72,12 @@ bash ./scripts/compute_kid.sh PROJECT
 ```
 
 ## Results
+Besides obtaining state-of-the-art results in supervised image-to-image translation, at a lesser cost than popular GAN and diffusion models, our main contribution is allowing a GAN to converge towards the theoretical optimum, as observed in the figure below, where the GAN objective in ATME converges towards $-\log(4)$ on average. For discussion of the observed deviations take a look at the paper. 
+
 <img src='imgs/convergence.png'>
 <br>
-<br>
 
-Besides obtaining state-of-the-art results in supervised image-to-image translation, at a lesser cost than popular GAN and diffusion models, our main contribution is allowing a GAN to converge towards the theoretical optimum, as observed in the figure above, where the discriminator loss in ATME converges towards $\log(4)$ on average. For discussion of the observed deviations take a look at the paper. 
-
-You can get the data for such plots from `./checkpoints/PROJECT/loss_log.csv`, by adding `D_real` and `D_fake`.
+You can get the data for such plots from `./checkpoints/PROJECT/loss_log.csv`, by adding `D_real` and `D_fake`, as per Eqs. (1) and (2) in the paper.
 
 ## Citation
 ```
