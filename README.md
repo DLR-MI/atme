@@ -36,7 +36,7 @@ python train.py --name PROJECT --model atme --batch_size 48 --direction AtoB --d
 For multi-GPU training, add the option `--gpu_ids 0,1,2,3,...` to the command above.
 
 In order to visualize intermediate results during the training process, you can either:
-- run `python -m visdom.server` and visit http://localhost:8097 in your browser, or
+- run `python -m visdom.server` in a separate terminal, before the command above, and visit http://localhost:8097 afterwards, or
 - check out `./checkpoints/PROJECT/web/index.html`. 
 
 You should then see snapshots corresponding to $x$, $W_{t}$, $x_t$, $\hat{y}$, and $y$ in the paper, and named with the suffices real_A, Disc_B, noisy_A, fake_B and real_B, respectively. For other training arguments inherited from [pix2pix](https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix), check out the modules in `./options`.
