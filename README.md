@@ -16,7 +16,7 @@ A suitable [conda](https://conda.io/) environment named `atme` can be created
 and activated with:
 
 ```
-conda env create -f environment.yaml
+conda env create -f environment.yml
 conda activate atme
 ```
 
@@ -76,9 +76,9 @@ bash ./scripts/compute_kid.sh PROJECT
 <br>
 <br>
 
-Besides obtaining state-of-the-art results at a lesser cost than popular GAN and diffusion models, our main contribution is allowing a GAN to converge towards the theoretical optimum, as observed in the figure above, where the discriminator loss in ATME converges towards $\log(4)$ on average. For discussion of the observed deviations take a look at the paper. 
+Besides obtaining state-of-the-art results in supervised image-to-image translation, at a lesser cost than popular GAN and diffusion models, our main contribution is allowing a GAN to converge towards the theoretical optimum, as observed in the figure above, where the discriminator loss in ATME converges towards $\log(4)$ on average. For discussion of the observed deviations take a look at the paper. 
 
-You can get the data for such plots from `./checkpoints/PROJECT/loss_log.csv`
+You can get the data for such plots from `./checkpoints/PROJECT/loss_log.csv`, by adding `D_real` and `D_fake`.
 
 ## Citation
 ```
