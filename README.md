@@ -53,11 +53,11 @@ The supported arguments for the generator are
 --dim                        embedding dimension of the UNet (int)
 --dim_mults                  attention resolutions (int)
 --groups                     number of groups for GroupNorm within ResnetBlocks (int)
---init_dim                   output channels after initial conv2d of x_t (int)
+--init_dim                   number of output channels after initial conv2d of x_t (int)
 --learned_sinusoidal_cond    learn fourier features for positional embedding? (bool)
 --random_fourier_features    random fourier features for positional embedding? (bool)
 --learned_sinusoidal_dim     twice the number of fourier frequencies to learn (int)
---time_dim_mult              dim * time_dim_mult amounts to output channels after time-MLP (int)
+--time_dim_mult              dim * time_dim_mult: number of output channels after time-MLP (int)
 ```
 By default, the positional embedding is carried out using fixed frequencies as in [Transformers](https://proceedings.neurips.cc/paper_files/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf).
 
