@@ -12,13 +12,15 @@ ATME is a GAN where, for each iteration at epoch $t$, the input images for the g
 The implementation is based on the official [pix2pix](https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix) pytorch code. Since it uses the UNet for denoising diffusion probabilistic models as generator, the corresponding module is borrowed from [lucidrains](https://github.com/lucidrains/denoising-diffusion-pytorch/blob/main/README.md).
 
 ## Requirements
-After cloning this repository, a suitable [conda](https://conda.io/) environment named `atme` can be created
-and activated with:
+First clone this repository:
+```
+git clone https://github.com/DLR-MI/atme.git
+cd atme
+```
+and install suitable dependencies:
+- For pip users, you need to `pip install -r requirements.txt`.
+- For conda users `conda env create -f environment.yml` and `conda activate atme`.
 
-```
-conda env create -f environment.yml
-conda activate atme
-```
 
 ## Datasets
 To run the experiments in the paper, you first need to download the respective datasets. This can be done by running 
