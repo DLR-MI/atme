@@ -66,7 +66,7 @@ By default, the positional embedding is carried out using fixed frequencies as i
 ## Evaluation
 To test your model, just run
 ```
-python test.py --name PROJECT --model atme --batch_size 48 --direction AtoB --dataroot ./datasets/DATASET
+python test.py --name PROJECT --model atme --direction AtoB --dataroot ./datasets/DATASET
 ```
 The results are placed in `./results/PROJECT`. Once there, you can compute the KID between real and generated images as
 ```
