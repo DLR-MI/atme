@@ -3,7 +3,7 @@
 
 This repository is the official implementation of *Look ATME: The Discriminator Mean Entropy Needs Attention*, accepted for the CVPR 2023 [Workshop on Generative Models for Computer Vision](https://generative-vision.github.io/workshop-CVPR-23/).
 
-<img src='imgs/mosaic_noisy.png'>
+<img src='imgs/mosaic_noisy.png'> 
 
 <br>
 
@@ -12,7 +12,7 @@ ATME is a GAN where, for each iteration at epoch $t$, the input images for the g
 The implementation is based on the official [pix2pix](https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix) pytorch code. Since it uses the UNet for denoising diffusion probabilistic models as generator, the corresponding module is borrowed from [lucidrains](https://github.com/lucidrains/denoising-diffusion-pytorch/blob/main/README.md).
 
 ## Requirements
-A suitable [conda](https://conda.io/) environment named `atme` can be created
+After cloning this repository, a suitable [conda](https://conda.io/) environment named `atme` can be created
 and activated with:
 
 ```
