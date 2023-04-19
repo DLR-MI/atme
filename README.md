@@ -1,7 +1,7 @@
 
 # ATME
 
-This repository is the official implementation of *Look ATME: The Discriminator Mean Entropy Needs Attention*, accepted for the CVPR 2023 [Workshop on Generative Models for Computer Vision](https://generative-vision.github.io/workshop-CVPR-23/).
+This repository is the official implementation of [Look ATME: The Discriminator Mean Entropy Needs Attention](https://arxiv.org/abs/2304.09024), accepted for the CVPR 2023 [Workshop on Generative Models for Computer Vision](https://generative-vision.github.io/workshop-CVPR-23/).
 
 <img src='imgs/mosaic_noisy.png'> 
 
@@ -83,10 +83,12 @@ You can get the data for such plots from `./checkpoints/PROJECT/loss_log.csv`, b
 
 ## Citation
 ```
-@inproceedings{solano2023atme,
-  title={Look ATME: The Discriminator Mean Entropy Needs Attention},
-  author={Solano-Carrillo, Edgardo and Bueno-Rodriguez, Angel and Carrillo-Perez, Borja and Steiniger, Yannik and Stoppe, Jannis},
-  booktitle={Computer Vision and Pattern Recognition (CVPR)},
-  year={2023}
+@misc{solanocarrillo2023look,
+      title={Look ATME: The Discriminator Mean Entropy Needs Attention}, 
+      author={Edgardo Solano-Carrillo and Angel Bueno Rodriguez and Borja Carrillo-Perez and Yannik Steiniger and Jannis Stoppe},
+      year={2023},
+      eprint={2304.09024},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
 }
 ```
