@@ -1,8 +1,11 @@
+import os
 import torch
 from .base_model import BaseModel
 from . import networks
 from util.image_pool import DiscPool
+import util.util as util
 from itertools import chain
+from data import create_dataset
 
 class AtmeModel(BaseModel):
     """ This class implements the ATME model, for learning a mapping from input images to output images given paired data.
@@ -31,6 +34,7 @@ class AtmeModel(BaseModel):
         """
         # changing the default values to match the pix2pix paper (https://phillipi.github.io/pix2pix/)
         parser.set_defaults(norm='instance', netG='unet_256_ddm', netD='basic', dataset_mode='aligned')
+        parser.add_argument('--n_save_noisy', type=int, default=0, help='number of D_t and W_t to keep track of')
         parser.add_argument('--mask_size', type=int, default=256)
         parser.add_argument('--dim', type=int, default=64, help='dim for the ddm UNet')
         parser.add_argument('--dim_mults', type=tuple, default=(1,2,4,8), help='dim_mults for the ddm UNet')
@@ -91,8 +95,27 @@ class AtmeModel(BaseModel):
             self.optimizer_D = torch.optim.Adam(self.netD.parameters(), lr=opt.lr, betas=(opt.beta1, 0.999))
             self.optimizers.append(self.optimizer_G)
             self.optimizers.append(self.optimizer_D)
+        
+               
+        # prepare to save D_t and W_t history
+        self.save_noisy = True if opt.n_save_noisy > 0 else False
+        if self.save_noisy:
+            self.save_DW_idx = torch.randint(len(create_dataset(opt)), (opt.n_save_noisy,))
+            self.img_DW_dir = os.path.join(opt.checkpoints_dir, opt.name, 'images_noisy')
+            util.mkdir(self.img_DW_dir)
 
-    def set_input(self, input):
+    def _save_DW(self, visuals):
+        to_save = (self.batch_indices.view(1, -1) == self.save_DW_idx.view(-1, 1)).any(dim=0)
+        if any(to_save) > 0:
+            idx_to_save = torch.nonzero(to_save)[0]
+            for label, images in visuals.items():
+                for idx, image in zip(idx_to_save, images[to_save]):
+                    img_idx = self.batch_indices[idx].item()
+                    image_numpy = util.tensor2im(image[None])
+                    img_path = os.path.join(self.img_DW_dir, f'epoch_{self.epoch:03d}_{label}_{img_idx}.png')
+                    util.save_image(image_numpy, img_path)
+
+    def set_input(self, input, epoch):
         """Unpack input data from the dataloader and perform necessary pre-processing steps.
 
         Parameters:
@@ -100,6 +123,7 @@ class AtmeModel(BaseModel):
 
         The option 'direction' can be used to swap images in domain A and domain B.
         """
+        self.epoch = epoch
         AtoB = self.opt.direction == 'AtoB'
         self.real_A = input['A' if AtoB else 'B'].to(self.device)
         self.real_B = input['B' if AtoB else 'A'].to(self.device)
@@ -153,3 +177,5 @@ class AtmeModel(BaseModel):
         self.optimizer_G.step()             # udpate G's weights
         # Save discriminator output
         self.disc_pool.insert(self.disc_B.detach(), self.batch_indices)
+        if self.save_noisy: # Save images corresponding to disc_B and Disc_B
+            self._save_DW({'D': torch.sigmoid(self.disc_B), 'W': self.Disc_B})
