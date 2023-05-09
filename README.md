@@ -1,5 +1,6 @@
 
-# ATME
+<!-- # ATME -->
+# <img src="imgs/atme.png" alt="ATME" width="100" height="100">
 
 This repository is the official implementation of [Look ATME: The Discriminator Mean Entropy Needs Attention](https://arxiv.org/abs/2304.09024), accepted for the CVPR 2023 [Workshop on Generative Models for Computer Vision](https://generative-vision.github.io/workshop-CVPR-23/).
 
@@ -82,6 +83,28 @@ Besides obtaining state-of-the-art results in supervised image-to-image translat
 <br>
 
 You can get the data for such plots from `./checkpoints/PROJECT/loss_log.csv`, by adding `D_real` and `D_fake`, as per Eqs. (1) and (2) in the paper.
+
+#### Is $W_t$ a Brownian motion?
+
+The script for training now has an optional argument `n_save_noisy` to allow studying the properties of $D_t$ and $W_t$. The animation below shows the tendency of the (rescaled) $D_t$ towards a flat distribution for all entries, corresponding to the Nash equilibrium.
+Take a look a the notebook `analyze_DW.ipynb` for experiments with the Maps dataset (in the direction AtoB) from which these results are obtained. You can find there some tests showing that $W_t$ behaves as a Brownian motion in a significant number of cases.
+
+<table>
+  <tr>
+    <td style="text-align: center"><img src="imgs/DWdW_452.gif"></td>
+    <td ><img src="imgs/DWdW_536.gif"></td>
+  </tr>
+  <tr>
+    <td style="text-align: center"><img src="imgs/DWdW_690.gif"></td>
+    <td style="text-align: center"><img src="imgs/DWdW_856.gif"></td>
+  </tr>
+</table>
+
+## Things left to do:
+- [x] Check if $W_t$ behaves as a Brownian motion.
+- [ ] Ablation of block (f) in the paper and how it leads to failure modes during training.
+- [ ] Ablation of block (g) in the paper and how it could generalize to different image resolutions.
+- [ ]  Generalization of ATME to unsupervised image-to-image translation.
 
 ## Citation
 ```
