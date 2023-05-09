@@ -1,6 +1,9 @@
 
 <!-- # ATME -->
-# <img src="imgs/atme.png" alt="ATME" width="100" height="50">
+# <img src="imgs/atme.png" alt="ATME" width="100" height="50"> 
+[ArXiv](https://arxiv.org/abs/2304.09024) |
+[Medium](https://medium.com/@essolanoc/boosting-image-generation-by-intersecting-gans-with-diffusion-models-6a22f935b0f3) 
+
 
 This repository is the official implementation of [Look ATME: The Discriminator Mean Entropy Needs Attention](https://arxiv.org/abs/2304.09024), accepted for the CVPR 2023 [Workshop on Generative Models for Computer Vision](https://generative-vision.github.io/workshop-CVPR-23/).
 
