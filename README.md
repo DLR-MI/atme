@@ -87,7 +87,22 @@ Besides obtaining state-of-the-art results in supervised image-to-image translat
 
 You can get the data for such plots from `./checkpoints/PROJECT/loss_log.csv`, by adding `D_real` and `D_fake`, as per Eqs. (1) and (2) in the paper.
 
-#### Is $W_t$ a Brownian motion?
+### Pre-trained models
+You can find the original checkpoints, logs, and configurations, in the following links:
+
+| Dataset | Translation | Checkpoints |
+|-----| ------| -----|
+| Facades | A $\rightarrow$ B | [[download]](https://zenodo.org/records/10065825/files/facades_AB.zip?download=1) |
+| Facades | B $\rightarrow$ A | [[download]](https://zenodo.org/records/10065825/files/facades_BA.zip?download=1) |
+| Maps | A $\rightarrow$ B | [[download]](https://zenodo.org/records/10065825/files/maps_AB.zip?download=1) |
+| Maps | B $\rightarrow$ A | [[download]](https://zenodo.org/records/10065825/files/maps_BA.zip?download=1) |
+| Cityscapes | A $\rightarrow$ B | [[download]](https://zenodo.org/records/10065825/files/cityscapes_AB.zip?download=1) |
+| Cityscapes | B $\rightarrow$ A | [[download]](https://zenodo.org/records/10065825/files/cityscapes_BA.zip?download=1) |
+| Night2day | A $\rightarrow$ B | [[download]](https://zenodo.org/records/10065825/files/night2day_AB.zip?download=1) |
+| Night2day | B $\rightarrow$ A | [[download]](https://zenodo.org/records/10065825/files/night2day_BA.zip?download=1) |
+
+
+### Is $W_t$ a Brownian motion?
 
 The script for training now has an optional argument `n_save_noisy` to allow studying the properties of $D_t$ and $W_t$. The animation below shows the tendency of the (rescaled) $D_t$ towards a flat distribution for all entries, corresponding to the Nash equilibrium.
 Take a look a the notebook `analyze_DW.ipynb` for experiments with the Maps dataset (in the direction AtoB) from which these results are obtained. You can find there some tests showing that $W_t$ behaves as a Brownian motion in a significant number of cases.
@@ -118,5 +133,19 @@ Take a look a the notebook `analyze_DW.ipynb` for experiments with the Maps data
       eprint={2304.09024},
       archivePrefix={arXiv},
       primaryClass={cs.CV}
+}
+
+@misc{solano_carrillo_2023_10065825,
+  author       = {Solano-Carrillo, Edgardo and
+                  Bueno Rodriguez, Angel and
+                  Carrillo-Perez, Borja and
+                  Steiniger, Yannik and
+                  Stoppe, Jannis},
+  title        = {ATME: Trained models and logs},
+  month        = nov,
+  year         = 2023,
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.10065825},
+  url          = {https://doi.org/10.5281/zenodo.10065825}
 }
 ```
