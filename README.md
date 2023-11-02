@@ -88,7 +88,7 @@ Besides obtaining state-of-the-art results in supervised image-to-image translat
 You can get the data for such plots from `./checkpoints/PROJECT/loss_log.csv`, by adding `D_real` and `D_fake`, as per Eqs. (1) and (2) in the paper.
 
 ### Pre-trained models
-You can find the original checkpoints, logs, and configurations, in the following links:
+You can find the original checkpoints, logs, and configurations used in the paper in the following links:
 
 | Dataset | Translation | Checkpoints |
 |-----| ------| -----|
@@ -101,6 +101,8 @@ You can find the original checkpoints, logs, and configurations, in the followin
 | Night2day | A $\rightarrow$ B | [[download]](https://zenodo.org/records/10065825/files/night2day_AB.zip?download=1) |
 | Night2day | B $\rightarrow$ A | [[download]](https://zenodo.org/records/10065825/files/night2day_BA.zip?download=1) |
 
+
+Note: the W models were originally named T. So make sure to call them W after download, if you want to load them. 
 
 ### Is $W_t$ a Brownian motion?
 
