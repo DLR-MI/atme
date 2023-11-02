@@ -115,7 +115,7 @@ class AtmeModel(BaseModel):
                     img_path = os.path.join(self.img_DW_dir, f'epoch_{self.epoch:03d}_{label}_{img_idx}.png')
                     util.save_image(image_numpy, img_path)
 
-    def set_input(self, input, epoch):
+    def set_input(self, input, epoch=None):
         """Unpack input data from the dataloader and perform necessary pre-processing steps.
 
         Parameters:
